@@ -1,0 +1,14 @@
+{
+    "presets": [
+        "env", "react", "stage-1"
+    ],
+    "ignore": [
+        "src/dependencies/*",
+        "bar/**/*.js"
+    ],
+    "env": {
+        "development": {
+            "presets": ["react-hmre"]
+        }
+    }
+}

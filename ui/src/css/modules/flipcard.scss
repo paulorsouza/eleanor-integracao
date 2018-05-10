@@ -1,0 +1,116 @@
+/* Baseado em um componente que fiz para outro projeto, com algumas gambis nesse css, precisa de refatoração */
+
+.toolbar {
+
+  @media only screen and (max-width : 800px) {
+    display: none;
+  }
+
+  position: relative;
+  top: -15px;
+  padding-left: 10px;
+
+  &__button {
+    min-width: calc(13em + 15px);
+    max-width: calc(13em + 15px);
+  }
+}
+
+.toggle {
+  display: none;
+  
+  &,
+  &:after,
+  &:before,
+  & *,
+  & *:after,
+  & *:before,
+  & + .toggle__button {
+    box-sizing: border-box;
+    &::selection {
+      background: none;
+    }
+  }
+  
+  + .toggle__button {
+    outline: 0;
+    width: 13em;
+    height: 2em;
+    position: absolute;
+    cursor: pointer;
+    user-select: none;
+    &:after,
+    &:before {
+      position: absolute;
+      content: "";
+      width: 50%;
+      height: 100%;
+    }
+    
+    &:after {
+      left: 0;
+    }
+    
+    &:before {
+      display: none;
+    }
+  }
+  
+  &:checked + .toggle__button:after {
+    left: 50%;
+  }
+}
+
+.toggle-flip__input {
+  + .toggle__button {
+    padding: 2px;
+    transition: all .2s ease;
+    perspective: 13em;
+    &:after,
+    &:before {
+      display: inline-block;
+      transition: all .4s ease;
+      width: 100%;
+      text-align: center;
+      position: absolute;
+      line-height: 2em;
+      font-weight: bold;
+      color: #fff;
+      top: 0;
+      left: 0;
+      backface-visibility: hidden;
+      border-radius: 4px;
+    }
+    
+    &:after {
+      content: attr(data-tg-on);
+      background: #337ab7;
+      transform: rotateY(-180deg);
+    }
+    
+    &:before {
+      background: $grey-3;
+      content: attr(data-tg-off);
+    }
+
+    &:active:before {
+      transform: rotateY(-10deg);
+    }
+  }
+  
+  &:checked + .toggle__button {
+    &:before {
+      transform: rotateY(180deg);
+    }
+    
+    &:after {
+      transform: rotateY(0);
+      left: 0;
+      background: #337ab7;;
+    }
+    
+    &:active:after {
+      transform: rotateY(10deg);
+    }
+  }
+}

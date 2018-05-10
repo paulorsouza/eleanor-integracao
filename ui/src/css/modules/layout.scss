@@ -1,0 +1,87 @@
+body {
+  background-color: $base-background;
+  font-size: 12px;
+  font-family: "Roboto Condensed", "Trebuchet MS", Tahoma, Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: black;
+  cursor: pointer;
+}
+
+.app-container {
+  overflow: visible;
+  width: 100%;
+  height: 100%;
+  position: static;
+
+  > .loading-spinner {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.app-history {
+  padding-left: 10px;
+  cursor: default;
+  background: gainsboro;
+  font-weight: bold;
+}
+
+a:hover, a:focus {
+  text-decoration: none;
+}
+
+footer#footer {
+  position: fixed;
+  bottom: 0;
+}
+
+.disable-link {
+  pointer-events: none;
+  cursor: default;
+}
+
+.scrollbar {
+	margin-left: 22px;
+	float: left;
+	height: 300px;
+	width: 65px;
+	background: #F5F5F5;
+	overflow-y: scroll;
+	margin-bottom: 25px;
+}
+
+.force-overflow {
+	min-height: 450px;
+}
+
+#wrapper {
+	text-align: center;
+	margin: auto;
+}
+
+::-webkit-scrollbar {
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background: rgba(0,0,0,0.1);
+  border: 1px solid #ccc;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: linear-gradient(left, #fff, #e4e4e4);
+  border: 1px solid #aaa;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #fff;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(left, #22ADD4, #1E98BA);
+}
