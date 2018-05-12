@@ -25,8 +25,4 @@ class DatabaseConfig {
     @Primary
     @Autowired
     fun oracleTemplate(@Qualifier("oracleSource") source: DataSource): NamedParameterJdbcTemplate = NamedParameterJdbcTemplate(source)
-
-    @Bean(name = arrayOf("mysqlTemplate"))
-    @Autowired
-    fun mysqlTemplate(@Qualifier("mysqlSource") source: DataSource): NamedParameterJdbcTemplate = NamedParameterJdbcTemplate(source)
 }
