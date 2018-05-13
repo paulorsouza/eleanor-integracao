@@ -49,4 +49,27 @@ class MaquinaClient {
                 String::class.java)
         return response.statusCode
     }
+
+    fun getMaquina(id: String): String {
+        val url = urlById(id)
+        val headers = HttpHeaders()
+        val maquina = MaquinaData("", "")
+        headers.contentType = MediaType.APPLICATION_JSON
+        val entity = HttpEntity<String>(headers)
+        val restTemplate = RestTemplate()
+        val response = restTemplate.exchange<String>(url, HttpMethod.GET, entity,
+                String::class.java)
+        return response.body
+    }
+
+    fun getMaquina(codigo: String, nome: String): MaquinaData? {
+        val maquina = MaquinaData(codigo, nome)
+        val headers = HttpHeaders()
+        headers.contentType = MediaType.APPLICATION_JSON
+        val entity = HttpEntity<MaquinaData>(maquina, headers)
+        val restTemplate = RestTemplate()
+        val response = restTemplate.exchange<MaquinaData>(MAQUINA_URL, HttpMethod.PATCH, entity,
+                MaquinaData::class.java)
+        return response.body
+    }
 }

@@ -26,4 +26,13 @@ class MaquinaClientTest {
 //        responseList = client.listMaquinas()
 //        assert(responseList!!.get(key)!!.codigo.equals("TESTE.1"))
     }
+
+    @Test
+    fun getMaquinaTest() {
+        val client = MaquinaClient()
+        val response = client.getMaquina("-LCM5PtBJ9iUkLxnxze4")
+        println(response)
+//        assert(response!!.codigo.equals("1"))
+//        assert(response!!.nome.equals("teste"))
+    }
 }
