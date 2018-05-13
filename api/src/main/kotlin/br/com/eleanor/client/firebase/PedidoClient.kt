@@ -28,9 +28,14 @@ class PedidoClient {
         }
     }
 
+    fun addPedido(codigo: String, produto: String, quantidade: Int, title: String): FirebaseKeyData {
+        return addPedido(true, true, "", "", codigo, null,
+                "", "", false, produto, null, quantidade, 0, null, title )
+    }
+
     fun addPedido(canChangeGroup: Boolean?, canMove: Boolean?, canResize: String?, className: String?,
                   codigo : String?, end_time: Float?, group: String?, id: String?, planejado: Boolean?,
-                  produto: String?, produtoDict: ProdutoData?, quantidade: Integer?, sizeTime: Integer?, start_time: Float?, title: String?): FirebaseKeyData {
+                  produto: String?, produtoDict: ProdutoData?, quantidade: Int?, sizeTime: Int?, start_time: Float?, title: String?): FirebaseKeyData {
         val pedido = PedidoData(canChangeGroup, canMove, canResize, className,
                 codigo, end_time, group, id, planejado,
                 produto, produtoDict, quantidade, sizeTime, start_time, title)
@@ -67,7 +72,7 @@ class PedidoClient {
 
     fun getPedido(canChangeGroup: Boolean?, canMove: Boolean?, canResize: String?, className: String?,
                   codigo : String?, end_time: Float?, group: String?, id: String?, planejado: Boolean?,
-                  produto: String?, produtoDict: ProdutoData?, quantidade: Integer?, sizeTime: Integer?, start_time: Float?, title: String?): PedidoData? {
+                  produto: String?, produtoDict: ProdutoData?, quantidade: Int?, sizeTime: Int?, start_time: Float?, title: String?): PedidoData? {
         val pedido = PedidoData(canChangeGroup, canMove, canResize, className,
                 codigo, end_time, group, id, planejado,
                 produto, produtoDict, quantidade, sizeTime, start_time, title)
