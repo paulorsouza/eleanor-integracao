@@ -32,7 +32,7 @@ class MaquinaClientTest {
         val client = MaquinaClient()
         val response = client.getMaquina("-LCM5PtBJ9iUkLxnxze4")
         println(response)
-//        assert(response!!.codigo.equals("1"))
-//        assert(response!!.nome.equals("teste"))
+        assert(response!!.codigo.equals("1"))
+        assert(response!!.nome.equals("teste"))
     }
 }

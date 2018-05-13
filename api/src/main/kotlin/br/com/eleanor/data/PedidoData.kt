@@ -1,6 +1,5 @@
 package br.com.eleanor.data
 
-import java.sql.Date
-
-data class PedidoData(val canChangeGroup: Boolean, val canMoove: Boolean, val canResize: String, val className: String,
-                      val codigo : String, val end_time: Date, val group: String, val id: String)
+data class PedidoData(val canChangeGroup: Boolean?, val canMove: Boolean?, val canResize: String?, val className: String?,
+                      val codigo : String?, val end_time: Float?, val group: String?, val id: String?, val planejado: Boolean?,
+                      val produto: String?, val produtoDict: ProdutoData?, val quantidade: Integer?, val sizeTime: Integer?, val start_time: Float?, val title: String?)
