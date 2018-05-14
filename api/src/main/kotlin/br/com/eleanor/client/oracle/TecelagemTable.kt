@@ -11,6 +11,10 @@ class TecelagemTable(private val jdbcTemplate: NamedParameterJdbcTemplate) {
                 "pcpt_010.cd_pano_subgrupo||'.'||  " +
                 "pcpt_010.cd_pano_item||' - '|| " +
                 "basi_010.narrativa as descricao, " +
+                "pcpt_010.cd_pano_nivel99||'.'|| " +
+                "pcpt_010.cd_pano_grupo||'.'||  " +
+                "pcpt_010.cd_pano_subgrupo||'.'||  " +
+                "pcpt_010.cd_pano_item as produto, " +
                 "pcpt_010.qtde_quilos_prog " +
                 "from pcpt_010, basi_010 " +
                 "where pcpt_010.cd_pano_nivel99 = basi_010.nivel_estrutura " +
@@ -21,7 +25,7 @@ class TecelagemTable(private val jdbcTemplate: NamedParameterJdbcTemplate) {
         return jdbcTemplate.query(query) {
             rs, _ ->
             TecelagemData(
-                    rs.getInt("ORDEM_TECELAGEM"), rs.getString("DESCRICAO"), rs.getDouble("QTDE_QUILOS_PROG")
+                    rs.getInt("ORDEM_TECELAGEM"), rs.getString("DESCRICAO"), rs.getDouble("QTDE_QUILOS_PROG"), rs.getString("PRODUTO")
             )
         }
     }

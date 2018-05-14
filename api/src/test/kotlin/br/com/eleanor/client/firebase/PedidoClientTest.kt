@@ -23,6 +23,16 @@ class PedidoClientTest {
     }
 
     @Test
+    fun addPedidoWithDefaultsTest() {
+        val client = PedidoClient()
+        val response = client.addPedido("teste1", "produto", 1, "produto 1")
+        val key = response.name
+        var responseList = client.listPedidos()
+        assert(responseList!!.get(key)!!.codigo.equals("teste1"))
+        assert(responseList!!.get(key)!!.group.equals(""))
+    }
+
+    @Test
     fun getPedidoTest() {
         val client = PedidoClient()
         val response = client.getPedido("pedido-1520180800111")

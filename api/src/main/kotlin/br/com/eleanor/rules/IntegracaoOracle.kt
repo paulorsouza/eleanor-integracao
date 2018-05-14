@@ -1,5 +1,5 @@
 package br.com.eleanor.rules
 
-class IntegracaoSystextil() {
+class IntegracaoOracle() {
 
 }

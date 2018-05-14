@@ -28,7 +28,7 @@ class PedidoClient {
         }
     }
 
-    fun addPedido(codigo: String, produto: String, quantidade: Int, title: String): FirebaseKeyData {
+    fun addPedido(codigo: String?, produto: String?, quantidade: Int, title: String?): FirebaseKeyData {
         return addPedido(true, true, "", "", codigo, null,
                 "", "", false, produto, null, quantidade, 0, null, title )
     }
