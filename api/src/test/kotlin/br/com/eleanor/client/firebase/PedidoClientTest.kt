@@ -1,5 +1,6 @@
 package br.com.eleanor.client.firebase
 
+import org.junit.Ignore
 import org.junit.Test
 
 class PedidoClientTest {
@@ -40,4 +41,13 @@ class PedidoClientTest {
         assert(response!!.codigo.equals("1"))
         assert(response!!.group.equals("TING.001"))
     }
+
+    @Ignore @Test
+    fun cleanPedidos() {
+        val client = PedidoClient()
+        val response = client.listPedidos()
+        val pedidos = response!!.filter { r -> !r.key.startsWith("pedido-") }
+        pedidos.forEach { p -> client.deletePedido(p.key) }
+    }
+
 }

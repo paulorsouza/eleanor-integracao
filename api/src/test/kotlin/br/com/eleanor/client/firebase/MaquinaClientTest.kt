@@ -20,11 +20,10 @@ class MaquinaClientTest {
         var responseList = client.listMaquinas()
         assert(responseList!!.get(key)!!.codigo.equals("TESTE.1"))
         assert(responseList!!.get(key)!!.nome.equals("TESTE 1"))
-        // Sem permissão para deletar
-//        val status = client.deleteMaquina(key)
-//        println(status)
-//        responseList = client.listMaquinas()
-//        assert(responseList!!.get(key)!!.codigo.equals("TESTE.1"))
+        val status = client.deleteMaquina(key)
+        println(status)
+        responseList = client.listMaquinas()
+        assert(responseList!!.get(key) == null)
     }
 
     @Test
