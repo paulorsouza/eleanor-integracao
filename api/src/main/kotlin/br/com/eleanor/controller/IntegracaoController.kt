@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.RestController
 class IntegracaoController : DefaultController() {
     @GetMapping("/firebase/pedidos")
     fun integrarPedido() : List<IntegracaoResultData> {
-        val rule = TecelagemTable(oracleTemplate)
-        val list = rule.listTecelagem()
-        val integracao = IntegracaoFirebase()
-        return integracao.integrarPedidos(list)
+        val integracao = IntegracaoFirebase(oracleTemplate)
+        return integracao.integrarPedidos()
     }
 }
