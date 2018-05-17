@@ -74,4 +74,18 @@ class ProdutoClient {
                 ProdutoData::class.java)
         return response.body
     }
+
+    data class Payload(val codigo: String)
+
+    fun getProdutoByCodigo(codigo: String): ProdutoData {
+        val payload = Payload(codigo)
+        val headers = HttpHeaders()
+        headers.accept = arrayListOf(MediaType.APPLICATION_JSON)
+        headers.contentType = MediaType.APPLICATION_JSON
+        val entity = HttpEntity<Payload>(payload, headers)
+        val restTemplate = RestTemplate()
+        val response = restTemplate.exchange<ProdutoData>(PRODUTO_URL, HttpMethod.PATCH, entity,
+                ProdutoData::class.java)
+        return response.body
+    }
 }

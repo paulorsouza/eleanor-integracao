@@ -1,6 +1,7 @@
 package br.com.eleanor.client.firebase
 
 import org.junit.Test
+import org.junit.Ignore
 
 class ProdutoClientTest {
 
@@ -28,6 +29,15 @@ class ProdutoClientTest {
         val client = ProdutoClient()
         val response = client.getProduto("produto-1512826961484")
         println(response)
+        assert(response!!.codigo.equals("1.JUCCA.P.000001"))
+        assert(response!!.nome.equals("Camiseta Junior"))
+        assert(response!!.maquinasRelacionadas!!.getMaquinaRelacionada().get("maquina-relacionada-1512826958873")!!.maquina.equals("maquina-1512826275709"))
+    }
+
+    @Ignore @Test
+    fun getProdutoByCodTest() {
+        val client = ProdutoClient()
+        val response = client.getProdutoByCodigo("1.JUCCA.P.000001")
         assert(response!!.codigo.equals("1.JUCCA.P.000001"))
         assert(response!!.nome.equals("Camiseta Junior"))
         assert(response!!.maquinasRelacionadas!!.getMaquinaRelacionada().get("maquina-relacionada-1512826958873")!!.maquina.equals("maquina-1512826275709"))
