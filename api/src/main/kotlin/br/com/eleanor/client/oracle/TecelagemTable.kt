@@ -24,7 +24,9 @@ class TecelagemTable(private val jdbcTemplate: NamedParameterJdbcTemplate) {
                 "where pcpt_010.cd_pano_nivel99 = basi_010.nivel_estrutura " +
                 "  and pcpt_010.cd_pano_grupo = basi_010.grupo_estrutura " +
                 "  and pcpt_010.cd_pano_subgrupo = basi_010.subgru_estrutura " +
-                "  and pcpt_010.cd_pano_item = basi_010.item_estrutura "
+                "  and pcpt_010.cd_pano_item = basi_010.item_estrutura " +
+                "  and pcpt_010.cd_pano_grupo = '00001' " +
+                "  and pcpt_010.cd_pano_subgrupo = 'NCL' "
 
         return jdbcTemplate.query(query) {
             rs, _ ->

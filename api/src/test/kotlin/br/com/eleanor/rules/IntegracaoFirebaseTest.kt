@@ -10,32 +10,21 @@ import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
 
 class IntegracaoFirebaseTest {
-    @Ignore @Test
+    @Test
     fun integracaoTest() {
         val jdbcTemplate = NamedParameterJdbcTemplate(JdbcTemplate(HikariCustomConfig().getOracleTemplate()))
-        val rule = TecelagemTable(jdbcTemplate)
-        val list = rule.listTecelagem()
-        val integracao = IntegracaoFirebase()
-        val result = integracao.integrarPedidos(list)
+        val integracao = IntegracaoFirebase(jdbcTemplate)
+        val result = integracao.integrarPedidos()
         result.forEach {
-            r -> assert(r.status == Status.SUCCESS)
+            r -> println(r.msg)
         }
     }
 
     @Test
-    fun integrarPedidoTest() {
-        val jdbcTemplate = NamedParameterJdbcTemplate(JdbcTemplate(HikariCustomConfig().getOracleTemplate()))
-        val rule = TecelagemTable(jdbcTemplate)
-        val list = rule.listTecelagem()
-        val tecelagem = list.first()
-        val integracao = IntegracaoFirebase()
-        integracao.integrarPedido(tecelagem)
-    }
-
-    @Test
     fun getProdutoKeyTest() {
+        val jdbcTemplate = NamedParameterJdbcTemplate(JdbcTemplate(HikariCustomConfig().getOracleTemplate()))
         val produtos = ProdutoClient().listProdutos()
-        val integracao = IntegracaoFirebase()
+        val integracao = IntegracaoFirebase(jdbcTemplate)
         val key = integracao.getProdutoKey(produtos!!, "1.JUCCA.P.000001")
         assert("produto-1512826961484".equals(key))
         val keyNull = integracao.getProdutoKey(produtos!!, "error")
