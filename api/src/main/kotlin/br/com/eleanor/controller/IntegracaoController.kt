@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
-@CrossOrigin(origins = arrayOf("http://192.168.254.91:8080"))
+@CrossOrigin(origins = arrayOf("http://192.168.254.91:8080", "http://192.168.254.91:444"))
 @RestController
 @RequestMapping("/integracao")
 class IntegracaoController {
