@@ -6,9 +6,8 @@ import org.junit.Test
 import org.junit.Ignore
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
-import java.sql.Timestamp
-import java.util.*
 
+/* TODO configurar banco de testes para rodar os testes */
 class TecelagemTableTest {
     @Ignore @Test
     fun listTecelagemTest() {
@@ -19,7 +18,7 @@ class TecelagemTableTest {
         println(list.first().descricao)
     }
 
-    @Test
+    @Ignore @Test
     fun updateTecelagem() {
         val jdbcTemplate = NamedParameterJdbcTemplate(JdbcTemplate(HikariCustomConfig().getOracleTemplate()))
         val maq = MaquinaTable(jdbcTemplate).getMaquina("TING.003")

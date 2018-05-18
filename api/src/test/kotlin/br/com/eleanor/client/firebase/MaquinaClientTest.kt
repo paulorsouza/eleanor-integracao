@@ -1,9 +1,12 @@
 package br.com.eleanor.client.firebase
 
+import org.junit.Ignore
 import org.junit.Test
 
+/* TODO configurar banco de testes para rodar os testes */
 class MaquinaClientTest {
 
+    @Ignore
     @Test
     fun listMaquinasTest() {
         val client = MaquinaClient()
@@ -12,7 +15,7 @@ class MaquinaClientTest {
         assert(response!!.get("-LCM5PtBJ9iUkLxnxze4")!!.nome.equals("teste"))
     }
 
-    @Test
+    @Ignore @Test
     fun addMaquinaTest() {
         val client = MaquinaClient()
         val response = client.addMaquina("TESTE.1", "TESTE 1")
@@ -26,7 +29,7 @@ class MaquinaClientTest {
         assert(responseList!!.get(key) == null)
     }
 
-    @Test
+    @Ignore @Test
     fun getMaquinaTest() {
         val client = MaquinaClient()
         val response = client.getMaquina("-LCM5PtBJ9iUkLxnxze4")

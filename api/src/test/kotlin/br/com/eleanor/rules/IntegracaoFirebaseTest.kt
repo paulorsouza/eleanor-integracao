@@ -1,16 +1,15 @@
 package br.com.eleanor.rules
 
 import br.com.eleanor.client.firebase.ProdutoClient
-import br.com.eleanor.client.oracle.TecelagemTable
-import br.com.eleanor.data.Status
 import br.com.eleanor.databases.HikariCustomConfig
 import org.junit.Ignore
 import org.junit.Test
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
 
+/* TODO configurar banco de testes para rodar os testes */
 class IntegracaoFirebaseTest {
-    @Test
+    @Ignore @Test
     fun integracaoTest() {
         val jdbcTemplate = NamedParameterJdbcTemplate(JdbcTemplate(HikariCustomConfig().getOracleTemplate()))
         val integracao = IntegracaoFirebase(jdbcTemplate)
@@ -20,7 +19,7 @@ class IntegracaoFirebaseTest {
         }
     }
 
-    @Test
+    @Ignore @Test
     fun getProdutoKeyTest() {
         val jdbcTemplate = NamedParameterJdbcTemplate(JdbcTemplate(HikariCustomConfig().getOracleTemplate()))
         val produtos = ProdutoClient().listProdutos()

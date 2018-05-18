@@ -1,10 +1,11 @@
 package br.com.eleanor.client.firebase
 
 import org.junit.Test
+import org.junit.Ignore
 
+/* TODO configurar banco de testes para rodar os testes */
 class SetorClientTest {
-
-    @Test
+    @Ignore @Test
     fun listSetoresTest() {
         val client = SetorClient()
         val response = client.listSetores()
@@ -12,7 +13,7 @@ class SetorClientTest {
         assert(response!!.get("setor-1512772078265")!!.nome.equals("confeccao"))
     }
 
-    @Test
+    @Ignore @Test
     fun addSetorTest() {
         val client = SetorClient()
         val response = client.addSetor("TESTE.1", "TESTE 1")
@@ -22,11 +23,10 @@ class SetorClientTest {
         assert(responseList!!.get(key)!!.nome.equals("TESTE 1"))
     }
 
-    @Test
+    @Ignore @Test
     fun getSetorTest() {
         val client = SetorClient()
         val response = client.getSetor("setor-1512772078265")
-        println(response)
         assert(response!!.codigo.equals("1"))
         assert(response!!.nome.equals("confeccao"))
     }
