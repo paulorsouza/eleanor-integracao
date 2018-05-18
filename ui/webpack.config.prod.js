@@ -33,7 +33,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
-        BASE_URL: JSON.stringify('http://192.168.254.1:8080/api')
+        BASE_URL: JSON.stringify('http://192.168.254.91:8080/api')
       },
     }),
     new webpack.optimize.UglifyJsPlugin({
