@@ -6,7 +6,6 @@ import br.com.eleanor.client.oracle.MaquinaTable
 import br.com.eleanor.client.oracle.TecelagemTable
 import br.com.eleanor.data.*
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
-import java.util.Calendar
 
 class IntegracaoOracle(private val jdbcTemplate: NamedParameterJdbcTemplate) {
 
@@ -20,7 +19,9 @@ class IntegracaoOracle(private val jdbcTemplate: NamedParameterJdbcTemplate) {
         val result = arrayListOf<IntegracaoResultData>()
         val pedidos = pedidoClient.listPedidos()
         pedidos?.values?.forEach { pedido ->
-            result.add(atualizarPedido(pedido))
+            if(!pedido.group.isNullOrEmpty()) {
+                result.add(atualizarPedido(pedido))
+            }
         }
         return result
     }
@@ -35,6 +36,7 @@ class IntegracaoOracle(private val jdbcTemplate: NamedParameterJdbcTemplate) {
             return IntegracaoResultData(Status.SUCCESS, SUCCESS_MSG, pedido.id, pedido.codigo)
         }
         catch (ex: Exception) {
+            println(ex)
             return IntegracaoResultData(Status.ERROR, ex.message, pedido.id, pedido.codigo)
         }
     }
