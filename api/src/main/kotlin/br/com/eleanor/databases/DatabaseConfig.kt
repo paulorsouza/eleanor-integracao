@@ -17,10 +17,6 @@ class DatabaseConfig {
     @ConfigurationProperties(prefix = "spring.oracle")
     fun oracleSource(): DataSource = DataSourceBuilder.create().build()
 
-    @Bean(name = arrayOf("mysqlSource"))
-    @ConfigurationProperties(prefix = "spring.mysql")
-    fun mysqlSource(): DataSource = DataSourceBuilder.create().build()
-
     @Bean(name = arrayOf("oracleTemplate"))
     @Primary
     @Autowired
