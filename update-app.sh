@@ -8,7 +8,6 @@ npm install
 npm run build
 cd ..
 cd api
-export PATH=$PATH:/opt/gradle/gradle-4.7/bin
 gradle build
 cd ..
 sudo docker build --rm -t eleanor . 
