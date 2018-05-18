@@ -15,13 +15,11 @@ class IntegracaoOracle(private val jdbcTemplate: NamedParameterJdbcTemplate) {
             var dataFim = Calendar.getInstance()
             dataFim.timeInMillis = pedido.end_time!!.toLong()
             val tecelagemTable = TecelagemTable(jdbcTemplate)
-            tecelagemTable.update(maquina!!, dataInicio, dataFim, pedido.codigo)
+            tecelagemTable.update(maquina!!, dataInicio, dataFim, pedido.codigo!!.toInt())
 
         } catch (ex: Exception) {
             println(ex)
         }
-
-
     }
 }
 
