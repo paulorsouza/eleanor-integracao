@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
-@CrossOrigin(origins = arrayOf("http://192.168.0.5:8080", "http://192.168.0.5", "http://192.168.254.91:8080"))
+@CrossOrigin(origins = arrayOf("https://192.168.254.91:8080", "http://192.168.254.91:8080"))
 @RestController
 @RequestMapping("/integracao")
 class IntegracaoController {
     val oracleTemplate = NamedParameterJdbcTemplate(HikariCustomConfig().getOracleTemplate())
-    
+
     @GetMapping("/firebase/pedidos/integrar", produces = arrayOf("application/json"))
     fun integrarPedidos() : List<IntegracaoResultData> {
         val integracao = IntegracaoFirebase(oracleTemplate)
