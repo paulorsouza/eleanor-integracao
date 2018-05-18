@@ -1,0 +1,21 @@
+instalar docker 
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt-get update
+apt-cache policy docker-ce
+sudo apt-get install -y docker-ce
+sudo systemctl status docker
+
+maven
+cd /opt/
+wget http://www-eu.apache.org/dist/maven/maven-3/3.5.3/binaries/apache-maven-3.5.3-bin.tar.gz
+
+sudo tar -xvzf apache-maven-3.5.3-bin.tar.gz
+sudo mv apache-maven-3.5.3 maven 
+sudo nano /etc/profile.d/mavenenv.sh
+export M2_HOME=/opt/maven
+export PATH=${M2_HOME}/bin:${PATH}
+sudo chmod +x /etc/profile.d/mavenenv.sh
+sudo source /etc/profile.d/mavenenv.sh
+
+mvn install:install-file -Dfile=ojdbc7-12.1.0.2.jar -DgroupId=com.oracle -DartifactId=ojdbc7 -Dversion=12.1.0.2 -Dpackaging=jar
