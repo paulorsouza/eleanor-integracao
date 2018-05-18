@@ -1,12 +1,15 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Agendamento from './containers/Agendamento';
+import Integracao from './containers/Integracao';
+import Layout from './components/Layout';
 
 const mainLayout = () => {
   return (
     <div>
       <Switch>
-        <Route path="/" component={Agendamento} />
+        <Layout>
+          <Route path="/" component={Integracao} />
+        </Layout>
       </Switch>
     </div>
   );

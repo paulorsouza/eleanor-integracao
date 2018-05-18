@@ -3,9 +3,10 @@ package br.com.eleanor.controller
 import br.com.eleanor.data.IntegracaoResultData
 import br.com.eleanor.databases.HikariCustomConfig
 import br.com.eleanor.rules.IntegracaoFirebase
+import br.com.eleanor.rules.IntegracaoOracle
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
-import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.CrossOrigin
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -23,7 +24,7 @@ class IntegracaoController {
 
     @GetMapping("/oracle/pedidos/atualizar")
     fun atualizarPedidos() : List<IntegracaoResultData> {
-        val integracao = IntegracaoFirebase(oracleTemplate)
-        return integracao.integrarPedidos()
+        val integracao = IntegracaoOracle(oracleTemplate)
+        return integracao.atualizarPedidos()
     }
 }

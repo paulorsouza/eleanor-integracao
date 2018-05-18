@@ -1,51 +1,64 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Button, Table } from 'react-bootstrap';
-// import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { integrarPedidos, atualizarPedidos } from '../redux/modules/integracao';
 
-class Integracao extends Component {
-  state = {
-    feedBack: []
-  }
+const mapStateToProps = state => ({
+  feedback: state.integracao.feedback
+});
 
-  render() {
-    return (
-      <div className="integracao-container">
-        <div className="integracao-acoes">
-          <Button
-            onClick={this.integrarPedidos}
-          >
-            Integrar pedidos do ST no Eleanor
-          </Button>
-          <Button
-            onClick={this.atualizarPedidos}
-          >
-            Atualizar pedidos no ST
-          </Button>
-        </div>
-        <Table responsive bordered>
-          <thead>
-            <tr>
-              <th>Id Firebase</th>
-              <th>Id Oracle</th>
-              <th>Mensagem</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.feedBack.map((f) => {
-              console.log(f.status);
-              return (
-                <tr>
-                  <td>{f.idFirebase}</td>
-                  <td>{f.idOracle}</td>
-                  <td>{f.msg}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </Table>
+const mapDispathToProps = dispatch => ({
+  integrarPedidos: bindActionCreators(integrarPedidos, dispatch),
+  atualizarPedidos: bindActionCreators(atualizarPedidos, dispatch),
+});
+
+const Integracao = (props) => {
+  return (
+    <div className="integracao-container">
+      <div className="integracao-acoes">
+        <Button
+          bsClass="btn btn-info"
+          onClick={props.integrarPedidos}
+        >
+          Integrar pedidos do ST no Eleanor
+        </Button>
+        <Button
+          bsClass="btn btn-info"
+          onClick={props.atualizarPedidos}
+        >
+          Atualizar pedidos do eleanor no ST
+        </Button>
       </div>
-    );
-  }
-}
+      <Table responsive bordered>
+        <thead>
+          <tr>
+            <th>Id Firebase</th>
+            <th>Id Oracle</th>
+            <th>Mensagem</th>
+          </tr>
+        </thead>
+        <tbody>
+          {props.feedback.map((f) => {
+            return (
+              <tr className={f.status === 'ERROR' ? 'error-row' : 'success-row'}>
+                <td>{f.idFirebase}</td>
+                <td>{f.idOracle}</td>
+                <td>{f.msg}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </Table>
+    </div>
+  );
+};
 
-export default Integracao;
+Integracao.propTypes = {
+  integrarPedidos: PropTypes.func.isRequired,
+  atualizarPedidos: PropTypes.func.isRequired,
+  feedback: PropTypes.array.isRequired
+};
+
+export default connect(mapStateToProps, mapDispathToProps)(Integracao);

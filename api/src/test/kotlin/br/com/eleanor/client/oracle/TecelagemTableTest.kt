@@ -2,8 +2,8 @@ package br.com.eleanor.client.oracle
 
 import br.com.eleanor.client.firebase.PedidoClient
 import br.com.eleanor.databases.HikariCustomConfig
-import org.junit.Test
 import org.junit.Ignore
+import org.junit.Test
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
 

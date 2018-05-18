@@ -1,7 +1,7 @@
 package br.com.eleanor.client.firebase
 
-import org.junit.Test
 import org.junit.Ignore
+import org.junit.Test
 
 /* TODO configurar banco de testes para rodar os testes */
 class SetorClientTest {

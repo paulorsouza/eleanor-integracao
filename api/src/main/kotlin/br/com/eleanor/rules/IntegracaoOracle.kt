@@ -1,10 +1,11 @@
 package br.com.eleanor.rules
 
 import br.com.eleanor.client.firebase.PedidoClient
-import br.com.eleanor.client.firebase.ProdutoClient
 import br.com.eleanor.client.oracle.MaquinaTable
 import br.com.eleanor.client.oracle.TecelagemTable
-import br.com.eleanor.data.*
+import br.com.eleanor.data.IntegracaoResultData
+import br.com.eleanor.data.PedidoData
+import br.com.eleanor.data.Status
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
 
 class IntegracaoOracle(private val jdbcTemplate: NamedParameterJdbcTemplate) {

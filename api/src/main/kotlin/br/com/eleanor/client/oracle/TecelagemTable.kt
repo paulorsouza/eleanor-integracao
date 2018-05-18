@@ -4,8 +4,6 @@ import br.com.eleanor.data.MaquinaStData
 import br.com.eleanor.data.PedidoData
 import br.com.eleanor.data.TecelagemData
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
-import java.sql.Date
-import java.time.LocalDateTime
 import java.util.*
 import kotlin.collections.HashMap
 

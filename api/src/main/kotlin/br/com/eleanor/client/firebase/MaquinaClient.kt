@@ -1,7 +1,7 @@
 package br.com.eleanor.client.firebase
+import br.com.eleanor.data.FirebaseKeyData
 import br.com.eleanor.data.MaquinaData
 import br.com.eleanor.data.MaquinasData
-import br.com.eleanor.data.FirebaseKeyData
 import org.springframework.http.*
 import org.springframework.web.client.RestTemplate
 

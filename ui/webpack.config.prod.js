@@ -15,7 +15,7 @@ module.exports = {
   entry: path.join(paths.JS, 'app.js'),
   output: {
     path: paths.DIST,
-    filename: 'app.bundle.js',
+    filename: 'app.[chunkhash].bundle.js',
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -24,7 +24,7 @@ module.exports = {
     new CleanWebpackPlugin([
       'dist'
     ]),
-    new ExtractTextPlugin('style.bundle.css'),
+    new ExtractTextPlugin('style.[chunkhash].bundle.css'),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')
@@ -33,7 +33,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
-        BASE_URL: JSON.stringify('http://localhost:8080/eleanor/api')
+        BASE_URL: JSON.stringify('http://localhost:8080/eleanor')
       },
     }),
     new webpack.optimize.UglifyJsPlugin({

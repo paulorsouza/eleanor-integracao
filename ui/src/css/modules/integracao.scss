@@ -1,0 +1,16 @@
+.integracao-container {
+  .error-row {
+    color: red;
+  }
+
+  .success-row {
+    color: green;
+  }
+
+  .integracao-acoes {
+    padding: 10px;
+    .btn {
+      margin-right: 10px;
+    }
+  }
+}

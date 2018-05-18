@@ -1,8 +1,8 @@
 package br.com.eleanor.data
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter
-import java.util.HashMap
 import com.fasterxml.jackson.annotation.JsonAnySetter
+import java.util.*
 
 class MaquinasData{
 
