@@ -19,7 +19,8 @@ class HikariCustomConfig {
         hikariDS.password = "oracle"
         hikariDS.username = "systextil"
 //        hikariDS.jdbcUrl = "jdbc:oracle:thin:@192.168.0.70:1521:teste"
-        hikariDS.jdbcUrl = "jdbc:oracle:thin:@177.135.121.210:46759:XE"
+//        hikariDS.jdbcUrl = "jdbc:oracle:thin:@177.135.121.210:46759:XE"
+        hikariDS.jdbcUrl = "jdbc:oracle:thin:@192.168.254.19:1521:orcl"
         return hikariDS
     }
 }
