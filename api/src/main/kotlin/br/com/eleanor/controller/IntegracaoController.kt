@@ -1,17 +1,28 @@
 package br.com.eleanor.controller
 
-import br.com.eleanor.client.oracle.TecelagemTable
 import br.com.eleanor.data.IntegracaoResultData
+import br.com.eleanor.databases.HikariCustomConfig
 import br.com.eleanor.rules.IntegracaoFirebase
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
+@CrossOrigin(origins = arrayOf("http://localhost", "http://localhost:3000", "http://localhost:8080"))
 @RequestMapping("/api/integracao")
-class IntegracaoController : DefaultController() {
-    @GetMapping("/firebase/pedidos")
-    fun integrarPedido() : List<IntegracaoResultData> {
+class IntegracaoController {
+    val oracleTemplate = NamedParameterJdbcTemplate(HikariCustomConfig().getOracleTemplate())
+
+    @GetMapping("/firebase/pedidos/integrar")
+    fun integrarPedidos() : List<IntegracaoResultData> {
+        val integracao = IntegracaoFirebase(oracleTemplate)
+        return integracao.integrarPedidos()
+    }
+
+    @GetMapping("/oracle/pedidos/atualizar")
+    fun atualizarPedidos() : List<IntegracaoResultData> {
         val integracao = IntegracaoFirebase(oracleTemplate)
         return integracao.integrarPedidos()
     }
