@@ -1,8 +1,8 @@
 echo "Atualizando eleanor integracao"
 echo "----------------------------------------------------------------"
 sudo systemctl stop apache2
-cd ui
 git pull
+cd ui
 npm install
 npm run build
 cd ..
