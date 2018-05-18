@@ -18,7 +18,7 @@ const reducer = (state = initialState, action = {}) => {
 
 export const integrarPedidos = () => {
   return (dispatch) => {
-    const url = '/api/integracao/firebase/pedidos/integrar';
+    const url = '/integracao/firebase/pedidos/integrar';
     dispatch({
       type: FEEDBACK,
       data: []
@@ -39,7 +39,7 @@ export const integrarPedidos = () => {
 
 export const atualizarPedidos = () => {
   return (dispatch) => {
-    const url = '/api/integracao/oracle/pedidos/atualizar';
+    const url = '/integracao/oracle/pedidos/atualizar';
     dispatch({
       type: FEEDBACK,
       data: []

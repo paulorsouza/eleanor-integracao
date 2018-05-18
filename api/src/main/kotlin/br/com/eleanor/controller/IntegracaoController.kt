@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @CrossOrigin(origins = arrayOf("http://localhost", "http://localhost:3000", "http://localhost:8080"))
-@RequestMapping("/api/integracao")
+@RequestMapping("/integracao")
 class IntegracaoController {
     val oracleTemplate = NamedParameterJdbcTemplate(HikariCustomConfig().getOracleTemplate())
 
