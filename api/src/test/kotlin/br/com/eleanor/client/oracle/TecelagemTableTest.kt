@@ -25,16 +25,6 @@ class TecelagemTableTest {
         val maq = MaquinaTable(jdbcTemplate).getMaquina("TING.003")
         val client = PedidoClient()
         val pedido = client.getPedido("-LCWFFkkjhzLtDYgMiBY")
-
-        var dataInicio = Calendar.getInstance()
-        dataInicio.timeInMillis = pedido.start_time!!.toLong()
-        val dataInicioTimeStamp = Timestamp.from(dataInicio.toInstant())
-        var dataFim = Calendar.getInstance()
-        dataFim.timeInMillis = pedido.end_time!!.toLong()
-        val dataFimTimeStamp = Timestamp.from(dataFim.toInstant())
-        val inicio = dataInicioTimeStamp.toLocalDateTime()
-        val fim = dataFimTimeStamp.toLocalDateTime()
         val res = TecelagemTable(jdbcTemplate).update(maq!!, pedido)
-        println(res)
     }
 }

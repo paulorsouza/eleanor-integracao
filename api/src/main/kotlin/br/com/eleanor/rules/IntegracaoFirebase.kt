@@ -44,7 +44,7 @@ class IntegracaoFirebase(private val jdbcTemplate: NamedParameterJdbcTemplate) {
             if (pedidoFirebase != null) {
                 return IntegracaoResultData(Status.ERROR, PEDIDO_MSG, pedidoFirebase.id, tecelagem.ordem_tecelagem.toString())
             }
-            val key = client.addPedido(tecelagem.ordem_tecelagem.toString(), tecelagem.produto, tecelagem.qtde_quilos_prog!!.toInt(), tecelagem.descricao)
+            val key = client.addPedido(tecelagem.ordem_tecelagem.toString(), produtoKey, tecelagem.qtde_quilos_prog!!.toInt(), tecelagem.descricao)
             return IntegracaoResultData(Status.SUCCESS, SUCCESS_MSG, key.name, tecelagem.ordem_tecelagem.toString())
         } catch (ex: Exception) {
             return IntegracaoResultData(Status.ERROR, ex.message, null, tecelagem.ordem_tecelagem.toString())
