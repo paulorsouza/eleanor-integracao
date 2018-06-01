@@ -43,4 +43,12 @@ class ProdutoClientTest {
         assert(response!!.nome.equals("Camiseta Junior"))
         assert(response!!.maquinasRelacionadas!!.getMaquinaRelacionada().get("maquina-relacionada-1512826958873")!!.maquina.equals("maquina-1512826275709"))
     }
+
+    @Ignore
+    @Test
+    fun deleteProdutoTest() {
+        val client = ProdutoClient()
+        val response = client.listProdutos()
+        response!!.forEach { m -> client.deleteProduto(m.key) }
+    }
 }

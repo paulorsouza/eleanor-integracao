@@ -43,12 +43,12 @@ class PedidoClientTest {
         assert(response!!.group.equals("TING.001"))
     }
 
-    @Ignore @Test
+    @Ignore
+    @Test
     fun cleanPedidos() {
         val client = PedidoClient()
         val response = client.listPedidos()
-        val pedidos = response!!.filter { r -> !r.key.startsWith("pedido-") }
-        pedidos.forEach { p -> client.deletePedido(p.key) }
+        response!!.forEach { p -> client.deletePedido(p.key) }
     }
 
 }

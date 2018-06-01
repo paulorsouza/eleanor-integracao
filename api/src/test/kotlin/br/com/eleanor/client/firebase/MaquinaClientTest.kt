@@ -15,7 +15,8 @@ class MaquinaClientTest {
         assert(response!!.get("-LCM5PtBJ9iUkLxnxze4")!!.nome.equals("teste"))
     }
 
-    @Ignore @Test
+    @Ignore
+    @Test
     fun addMaquinaTest() {
         val client = MaquinaClient()
         val response = client.addMaquina("TESTE.1", "TESTE 1")
@@ -23,10 +24,6 @@ class MaquinaClientTest {
         var responseList = client.listMaquinas()
         assert(responseList!!.get(key)!!.codigo.equals("TESTE.1"))
         assert(responseList!!.get(key)!!.nome.equals("TESTE 1"))
-        val status = client.deleteMaquina(key)
-        println(status)
-        responseList = client.listMaquinas()
-        assert(responseList!!.get(key) == null)
     }
 
     @Ignore @Test
@@ -36,5 +33,13 @@ class MaquinaClientTest {
         println(response)
         assert(response!!.codigo.equals("1"))
         assert(response!!.nome.equals("teste"))
+    }
+
+    @Ignore
+    @Test
+    fun deleteMaquinaTest() {
+        val client = MaquinaClient()
+        val response = client.listMaquinas()
+        response!!.forEach { m -> client.deleteMaquina(m.key) }
     }
 }
