@@ -58,4 +58,25 @@ export const atualizarPedidos = () => {
   };
 };
 
+export const integrarMaquinas = () => {
+  return (dispatch) => {
+    const url = '/integracao/oracle/maquinas/integrar';
+    dispatch({
+      type: FEEDBACK,
+      data: []
+    });
+    loadStart(dispatch);
+    axios.get(url)
+      .then((res) => {
+        dispatch({
+          type: FEEDBACK,
+          data: res.data
+        });
+      })
+      .finally(() => {
+        loadEnd(dispatch);
+      });
+  };
+};
+
 export default reducer;

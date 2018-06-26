@@ -3,7 +3,7 @@ import { Button, Table } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { integrarPedidos, atualizarPedidos } from '../redux/modules/integracao';
+import { integrarPedidos, atualizarPedidos, integrarMaquinas } from '../redux/modules/integracao';
 
 const mapStateToProps = state => ({
   feedback: state.integracao.feedback
@@ -12,6 +12,7 @@ const mapStateToProps = state => ({
 const mapDispathToProps = dispatch => ({
   integrarPedidos: bindActionCreators(integrarPedidos, dispatch),
   atualizarPedidos: bindActionCreators(atualizarPedidos, dispatch),
+  integrarMaquinas: bindActionCreators(integrarMaquinas, dispatch),
 });
 
 const Integracao = (props) => {
@@ -29,6 +30,12 @@ const Integracao = (props) => {
           onClick={props.atualizarPedidos}
         >
           Atualizar pedidos do eleanor no ST
+        </Button>
+        <Button
+          bsClass="btn btn-info"
+          onClick={props.integrarMaquinas}
+        >
+          Integrar maquinas do ST no eleanor
         </Button>
       </div>
       <Table responsive bordered>
@@ -58,6 +65,7 @@ const Integracao = (props) => {
 Integracao.propTypes = {
   integrarPedidos: PropTypes.func.isRequired,
   atualizarPedidos: PropTypes.func.isRequired,
+  integrarMaquinas: PropTypes.func.isRequired,
   feedback: PropTypes.array.isRequired
 };
 
