@@ -25,4 +25,10 @@ class IntegracaoController {
         val integracao = IntegracaoOracle(oracleTemplate)
         return integracao.atualizarPedidos()
     }
+
+    @GetMapping("/oracle/maquinas/integrar", produces = arrayOf("application/json"))
+    fun atualizarMaquinas() : List<IntegracaoResultData> {
+        val integracao = IntegracaoFirebase(oracleTemplate)
+        return integracao.integrarMaquinas()
+    }
 }
