@@ -25,7 +25,8 @@ class TecelagemTable(private val jdbcTemplate: NamedParameterJdbcTemplate) {
                 "  and pcpt_010.cd_pano_grupo = basi_010.grupo_estrutura " +
                 "  and pcpt_010.cd_pano_subgrupo = basi_010.subgru_estrutura " +
                 "  and pcpt_010.cd_pano_item = basi_010.item_estrutura " +
-                "  and pcpt_010.data_digitacao > to_date('01-05-2018', 'dd-mm-yyyy') "
+                "  and pcpt_010.data_prev_inicio is null " +
+                "  and pcpt_010.cod_cancelamento = 0 "
 
         return jdbcTemplate.query(query) {
             rs, _ ->

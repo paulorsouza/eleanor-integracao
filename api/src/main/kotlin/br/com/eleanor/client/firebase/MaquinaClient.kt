@@ -30,7 +30,7 @@ class MaquinaClient {
     }
 
     fun addMaquina(codigo: String, nome: String): FirebaseKeyData {
-        val maquina = MaquinaData(codigo, nome)
+        val maquina = MaquinaData(codigo, nome, "setor-1515964788762")
         val headers = HttpHeaders()
         headers.accept = arrayListOf(MediaType.APPLICATION_JSON)
         headers.contentType = MediaType.APPLICATION_JSON

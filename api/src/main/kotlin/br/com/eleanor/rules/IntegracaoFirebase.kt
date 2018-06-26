@@ -1,7 +1,9 @@
 package br.com.eleanor.rules
 
+import br.com.eleanor.client.firebase.MaquinaClient
 import br.com.eleanor.client.firebase.PedidoClient
 import br.com.eleanor.client.firebase.ProdutoClient
+import br.com.eleanor.client.oracle.MaquinaTable
 import br.com.eleanor.client.oracle.TecelagemTable
 import br.com.eleanor.data.*
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
@@ -49,5 +51,30 @@ class IntegracaoFirebase(private val jdbcTemplate: NamedParameterJdbcTemplate) {
         } catch (ex: Exception) {
             return IntegracaoResultData(Status.ERROR, ex.message, null, tecelagem.ordem_tecelagem.toString())
         }
+    }
+
+    fun integrarMaquinas(): ArrayList<IntegracaoResultData> {
+        val rep = MaquinaTable(jdbcTemplate)
+        val maquinas = rep.listMaquinas()
+        val result = arrayListOf<IntegracaoResultData>()
+        val maquinasFirebase = MaquinaClient().listMaquinas()
+        maquinas!!.forEach {
+            maquina ->
+                if (!maquinasFirebase!!.values.any { m -> m.codigo === maquina.first }) {
+                    result.add(integrarMaquina(maquina.first, maquina.second))
+                }
+        }
+        return result
+    }
+
+    fun integrarMaquina(codigo: String, nome: String): IntegracaoResultData {
+        val client = MaquinaClient()
+        try {
+            val key = client.addMaquina(codigo, nome)
+            return IntegracaoResultData(Status.SUCCESS, "Maquina integrada com sucesso", key.toString(), codigo)
+        } catch (ex: Exception) {
+            return IntegracaoResultData(Status.ERROR, ex.message, null, codigo)
+        }
+
     }
 }
