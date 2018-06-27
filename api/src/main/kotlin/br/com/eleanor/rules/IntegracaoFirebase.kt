@@ -44,12 +44,12 @@ class IntegracaoFirebase(private val jdbcTemplate: NamedParameterJdbcTemplate) {
             val pedidoFirebase = pedidos?.values?.firstOrNull {
                 v -> v.codigo?.toInt() == tecelagem.ordem_tecelagem }
             if (pedidoFirebase != null) {
-                return IntegracaoResultData(Status.ERROR, PEDIDO_MSG, pedidoFirebase.id, tecelagem.ordem_tecelagem.toString())
+                return IntegracaoResultData(Status.ERROR, PEDIDO_MSG + " produto = ${tecelagem.produto!!}", pedidoFirebase.id, tecelagem.ordem_tecelagem.toString())
             }
             val key = client.addPedido(tecelagem.ordem_tecelagem.toString(), produtoKey, tecelagem.qtde_quilos_prog!!.toInt(), tecelagem.descricao)
             return IntegracaoResultData(Status.SUCCESS, SUCCESS_MSG, key.name, tecelagem.ordem_tecelagem.toString())
         } catch (ex: Exception) {
-            return IntegracaoResultData(Status.ERROR, ex.message, null, tecelagem.ordem_tecelagem.toString())
+            return IntegracaoResultData(Status.ERROR, ex.message + " produto = ${tecelagem.produto!!}", null, tecelagem.ordem_tecelagem.toString())
         }
     }
 
